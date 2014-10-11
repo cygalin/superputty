@@ -668,5 +668,29 @@ namespace SuperPutty.Properties {
                 this["CommandBarLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TreeViewFullRowSelect {
+            get {
+                return ((bool)(this["TreeViewFullRowSelect"]));
+            }
+            set {
+                this["TreeViewFullRowSelect"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TreeViewSortNodesFirst {
+            get {
+                return ((bool)(this["TreeViewSortNodesFirst"]));
+            }
+            set {
+                this["TreeViewSortNodesFirst"] = value;
+            }
+        }
     }
 }

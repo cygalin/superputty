@@ -72,6 +72,9 @@ namespace SuperPutty
             this.ExpandInitialTree();
             SuperPuTTY.Sessions.ListChanged += new ListChangedEventHandler(Sessions_ListChanged);
             SuperPuTTY.Settings.SettingsSaving += new SettingsSavingEventHandler(Settings_SettingsSaving);
+
+            // usefull for background color
+            this.treeView1.FullRowSelect = SuperPuTTY.Settings.TreeViewFullRowSelect;
         }
 
         void ExpandInitialTree()
@@ -133,6 +136,11 @@ namespace SuperPutty
             {
                 TryAddSessionNode(session);
             }
+            if (SuperPuTTY.Settings.TreeViewSortNodesFirst) {
+                // maybe it should always be done
+                this.treeView1.Sort();
+            }
+            
         }
 
         private void TryAddSessionNode(SessionData session)
@@ -656,8 +664,17 @@ namespace SuperPutty
             TreeNode tx = x as TreeNode;
             TreeNode ty = y as TreeNode;
 
-            return string.Compare(tx.Text, ty.Text);
+            if (SuperPuTTY.Settings.TreeViewSortNodesFirst) {
+                // nodes first, then items
+                if (tx.Nodes.Count > 0 && ty.Nodes.Count == 0) {
+                    return -1;
+                }
+                if (tx.Nodes.Count == 0 && ty.Nodes.Count > 0) {
+                    return 1;
+                }
+            }
 
+            return string.Compare(tx.Text, ty.Text);
         }
 
         void ResortNodes()
