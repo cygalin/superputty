@@ -143,6 +143,47 @@ namespace SuperPutty.Data
             set { _Password = value; }
         }
 
+        // http://stackoverflow.com/questions/3280362/most-elegant-xml-serialization-of-color-structure
+        private System.Drawing.Color _BackColor;
+        [XmlIgnore]
+        public System.Drawing.Color BackColor
+        {
+            get { return _BackColor; }
+            set { _BackColor = value; }
+        }
+
+        [XmlAttribute("BackColor")]
+        public int BackColorAsArgb {
+            get { return _BackColor.ToArgb(); }
+            set { _BackColor = System.Drawing.Color.FromArgb(value); }
+        }
+
+
+        private System.Drawing.Color _ForeColor;
+        [XmlIgnore]
+        public System.Drawing.Color ForeColor
+        {
+            get { return _ForeColor; }
+            set { _ForeColor = value; }
+        }
+
+        [XmlAttribute("ForeColor")]
+        public int ForeColorAsArgb {
+            get { return _ForeColor.ToArgb(); }
+            set { _ForeColor = System.Drawing.Color.FromArgb(value); }
+        }
+
+
+        // multi line tooltip allowed
+        private string _Tooltip;
+        [XmlElement]
+        public string Tooltip
+        {
+            get { return _Tooltip; }
+            set { _Tooltip = value; }
+        }
+
+
         private string _ExtraArgs;
         [XmlAttribute]
         public string ExtraArgs
@@ -180,12 +221,16 @@ namespace SuperPutty.Data
             Port = port;
             Proto = protocol;
             PuttySession = sessionConfig;
+
+            ForeColor = System.Drawing.SystemColors.WindowText;
+            BackColor = System.Drawing.SystemColors.Window;
         }
         
         /// <summary>Default constructor, instantiate a new <seealso cref="SessionData"/> object</summary>
         public SessionData()
         {
-
+            ForeColor = System.Drawing.SystemColors.WindowText;
+            BackColor = System.Drawing.SystemColors.Window;
         }
 
         /// <summary>Read any existing saved sessions from the registry, decode and populate a list containing the data</summary>
