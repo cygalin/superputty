@@ -110,6 +110,23 @@ namespace SuperPutty
             }
 
 
+            if (Session.BackColor.IsSystemColor) {
+                this.textColorExample.BackColor = Session.BackColor;
+            }
+            else 
+            {
+                this.textColorExample.BackColor = Color.FromArgb(Session.BackColor.R, Session.BackColor.G, Session.BackColor.B);
+            }
+
+            if (Session.ForeColor.IsSystemColor) {
+                this.textColorExample.ForeColor = Session.ForeColor;
+            }
+            else {
+                this.textColorExample.ForeColor = Color.FromArgb(Session.ForeColor.R, Session.ForeColor.G, Session.ForeColor.B);
+            }
+
+            
+            
             // Setup icon chooser
             this.buttonImageSelect.ImageList = iconList;
             this.buttonImageSelect.ImageKey = string.IsNullOrEmpty(Session.ImageKey)
@@ -151,6 +168,9 @@ namespace SuperPutty
             Session.Username = textBoxUsername.Text.Trim();
             Session.SessionId = SessionData.CombineSessionIds(SessionData.GetSessionParentId(Session.SessionId), Session.SessionName);
             Session.ImageKey = buttonImageSelect.ImageKey;
+
+            Session.ForeColor = textColorExample.ForeColor;
+            Session.BackColor = textColorExample.BackColor;
 
             for (int i = 0; i < groupBox1.Controls.Count; i++)
             {
@@ -376,6 +396,21 @@ namespace SuperPutty
         }
 
         #endregion
+
+        private void buttonBackgroundColor_Click(object sender, EventArgs e) {
+            DialogResult r = colorDialog1.ShowDialog();
+            if (r == DialogResult.OK) {
+                textColorExample.BackColor = colorDialog1.Color;
+            }
+        }
+
+        private void buttonForegroundColor_Click(object sender, EventArgs e) {
+            DialogResult r = colorDialog1.ShowDialog();
+            if (r == DialogResult.OK) {
+                textColorExample.ForeColor = colorDialog1.Color;
+            }
+        }
+
 
     }
 }

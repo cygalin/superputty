@@ -55,6 +55,10 @@ namespace SuperPutty
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonImageSelect = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.buttonBackgroundColor = new System.Windows.Forms.Button();
+            this.textColorExample = new System.Windows.Forms.TextBox();
+            this.buttonForegroundColor = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -256,7 +260,7 @@ namespace SuperPutty
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(298, 261);
+            this.buttonSave.Location = new System.Drawing.Point(298, 292);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 8;
@@ -269,7 +273,7 @@ namespace SuperPutty
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.CausesValidation = false;
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(379, 261);
+            this.buttonCancel.Location = new System.Drawing.Point(379, 292);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 9;
@@ -348,13 +352,44 @@ namespace SuperPutty
             this.buttonImageSelect.UseVisualStyleBackColor = true;
             this.buttonImageSelect.Click += new System.EventHandler(this.buttonImageSelect_Click);
             // 
+            // buttonBackgroundColor
+            // 
+            this.buttonBackgroundColor.Location = new System.Drawing.Point(256, 255);
+            this.buttonBackgroundColor.Name = "buttonBackgroundColor";
+            this.buttonBackgroundColor.Size = new System.Drawing.Size(75, 23);
+            this.buttonBackgroundColor.TabIndex = 15;
+            this.buttonBackgroundColor.Text = "Background";
+            this.buttonBackgroundColor.UseVisualStyleBackColor = true;
+            this.buttonBackgroundColor.Click += new System.EventHandler(this.buttonBackgroundColor_Click);
+            // 
+            // textColorExample
+            // 
+            this.textColorExample.Location = new System.Drawing.Point(150, 258);
+            this.textColorExample.Name = "textColorExample";
+            this.textColorExample.Size = new System.Drawing.Size(100, 20);
+            this.textColorExample.TabIndex = 16;
+            this.textColorExample.Text = "example";
+            // 
+            // buttonForegroundColor
+            // 
+            this.buttonForegroundColor.Location = new System.Drawing.Point(337, 255);
+            this.buttonForegroundColor.Name = "buttonForegroundColor";
+            this.buttonForegroundColor.Size = new System.Drawing.Size(75, 23);
+            this.buttonForegroundColor.TabIndex = 17;
+            this.buttonForegroundColor.Text = "Foreground";
+            this.buttonForegroundColor.UseVisualStyleBackColor = true;
+            this.buttonForegroundColor.Click += new System.EventHandler(this.buttonForegroundColor_Click);
+            // 
             // dlgEditSession
             // 
             this.AcceptButton = this.buttonSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(470, 291);
+            this.ClientSize = new System.Drawing.Size(470, 322);
+            this.Controls.Add(this.buttonForegroundColor);
+            this.Controls.Add(this.textColorExample);
+            this.Controls.Add(this.buttonBackgroundColor);
             this.Controls.Add(this.buttonImageSelect);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxExtraArgs);
@@ -413,5 +448,9 @@ namespace SuperPutty
         private System.Windows.Forms.RadioButton radioButtonMintty;
         private System.Windows.Forms.Button buttonImageSelect;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Button buttonBackgroundColor;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.TextBox textColorExample;
+        private System.Windows.Forms.Button buttonForegroundColor;
     }
 }

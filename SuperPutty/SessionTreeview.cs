@@ -294,6 +294,9 @@ namespace SuperPutty
                     node.Name = session.SessionName;
                     node.ImageKey = session.ImageKey;
                     node.SelectedImageKey = session.ImageKey;
+                    node.BackColor = session.BackColor;
+                    node.ForeColor = session.ForeColor;
+
                     if (session.SessionId != session.OldSessionId)
                     {
                         try
